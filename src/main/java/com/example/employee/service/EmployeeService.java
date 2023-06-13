@@ -11,10 +11,9 @@ public class EmployeeService implements IEmployeeService{
     @Autowired
     private IEmployeeRepository employeeRepository;
     @Override
-    public Object save(Employee employee) {
+    public void save(Employee employee) {
         employeeRepository.save(employee);
 
-        return null;
     }
 
     @Override
@@ -32,10 +31,14 @@ public class EmployeeService implements IEmployeeService{
     public Optional<Employee> findById(Long id) {
         return employeeRepository.findById(id);
     }
-    public Iterable<Employee>findByName(String name){
-        return employeeRepository.findEmployeesByNameContaining(name);
+
+    @Override
+    public Iterable<Employee> findByName(String name) {
+      return   employeeRepository.findEmployeesByNameContaining(name);
     }
-    public Iterable<Employee>sortSalary(){
+
+    @Override
+    public Iterable<Employee> sortSalary() {
         return employeeRepository.findAllByOrderBySalaryDesc();
     }
 

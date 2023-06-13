@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee</title>
+</head>
+<body>
+<h1>Edit Employee</h1>
+<p>
+    <a href="/employee/list"> Back List Employee</a>
+</p>
+<th:block th:object="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:object="${employee}" th:action="@{/employee/edit}" method="post">
+    <label>
+        <input type="hidden" th:field="*{id}" name="id">
+    </label>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>
+                <label>
+                    <input th:field="*{name}" type="text">
+                </label>
+            </td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+          <tr>
+            <td>Email</td>
+            <td>
+                <label>
+                    <input th:field="*{email}" type="text">
+                </label>
+            </td>
+              <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</td>
+        </tr>
+          <tr>
+            <td>Number</td>
+            <td>
+                <label>
+                    <input th:field="*{number}" type="text">
+                </label>
+            </td>
+              <td th:if="${#fields.hasErrors('number')}" th:errors="*{number}">Name Error</td>
+        </tr>
+          <tr>
+            <td>Age</td>
+            <td>
+                <label>
+                    <input th:field="*{age}" type="text">
+                </label>
+            </td>
+              <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name Error</td>
+        </tr>
+          <tr>
+            <td>Salary</td>
+            <td>
+                <label>
+                    <input th:field="*{salary}" type="text">
+                </label>
+            </td>
+              <td th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">Name Error</td>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="submit" value="Update">
+                </label>
+            </td>
+        </tr>
+
+    </table>
+
+</form>
+
+</body>
+</html>

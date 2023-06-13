@@ -4,6 +4,12 @@
     <title>Form</title>
 </head>
 <body>
+<p>
+    <a href="/employee/list">Go to list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
 <form th:object="${employee}" th:action="@{/employee/create}" method="post" >
     <table>
         <tr>

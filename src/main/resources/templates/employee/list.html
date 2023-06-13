@@ -1,10 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add New Employee</title>
 </head>
 <body>
+<p>
+    <a href="/employee">Add new employee</a>
+</p>
+<h1>List Employee</h1>
+<table border="1">
+    <tr>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Number</td>
+        <td>Age</td>
+        <td>Salary</td>
+        <td>Delete</td>
+        <td>Edit</td>
+        <td>View</td>
+    </tr>
+    <th:block th:each=" employees : ${employee}">
+        <tr>
+            <td th:text="*{employees.name}"></td>
+            <td th:text="*{employees.email}"></td>
+            <td th:text="*{employees.number}"></td>
+            <td th:text="*{employees.age}"></td>
+            <td th:text="*{employees.salary}"></td>
+            <td>
+                <a th:href="@{{id}/delete(id=${employees.id})}">Delete</a>
+            </td>
+              <td>
+                <a th:href="@{{id}/edit(id=${employees.id})}">Edit</a>
+            </td>
+              <td>
+                <a th:href="@{{id}/view(id=${employees.id})}">View</a>
+            </td>
 
+        </tr>
+    </th:block>
+</table>
+    <div>
+        <form  action="/employee/search" method="get">
+            <label>
+                <input type="text" name="s">
+            </label>
+            <label>
+                <input type="submit" value="search">
+            </label>
+        </form>
+    </div>
+<form action="/employee/sort">
+    <label>
+        <input type="submit" value="sort" name="sort">
+    </label>
+</form>
 </body>
 </html>

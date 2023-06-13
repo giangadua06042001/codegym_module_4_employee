@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+</head>
+<body>
+<h1>View Employee</h1>
+<p>
+    <a href="/employee/list">Back To list</a>
+</p>
+<table th:object="${employee}">
+    <tr>
+        <td>Name</td>
+        <td th:text="${employee.name}"></td>
+    </tr>
+     <tr>
+        <td>Email</td>
+        <td th:text="${employee.email}"></td>
+    </tr>
+     <tr>
+        <td>Number</td>
+        <td th:text="${employee.number}"></td>
+    </tr>
+     <tr>
+        <td>Age</td>
+        <td th:text="${employee.age}"></td>
+    </tr>
+     <tr>
+        <td>Salary</td>
+        <td th:text="${employee.salary}"></td>
+    </tr>
+
+</table>
+</body>
+</html>

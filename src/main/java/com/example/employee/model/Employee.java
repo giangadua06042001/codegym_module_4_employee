@@ -4,19 +4,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.*;
+import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.*;
+
 
 @Entity
+@Component
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank(message = "không nên để tên trống")
     private String name;
+    @NotBlank(message = "Bat buoc phai nhap")
     @Email(message = "Nhập đúng định dạng email")
     private String email;
-    @Pattern(regexp = "(\"(^$|[0-9]*$)\")",message = "nhap dung dinh dang so dien thoai")
+//  @Pattern(regexp = "(\"(^$|[0-9]*$)\")",message = "nhap dung dinh dang so dien thoai")
     @Size(min = 10,max = 11)
     private String number;
     @Min(value = 18)
